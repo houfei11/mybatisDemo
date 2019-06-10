@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--将空间修改为接口中的全类名-->
+<mapper namespace="com.csdn.demo.dao.PersonalDao">
+    <!--将ID改为接口中的方法名-->
+    <select id="getPersonalById" parameterType="integer" resultType="com.csdn.demo.entity.Personal" >
+        select * from personal where stuId = #{id}
+    </select>
+    <insert id="addPersonal" parameterType="com.csdn.demo.entity.Personal">
+        insert into personal(stuId, stuName, stuAge, school, stuTime)
+        value (#{stuId}, #{stuName}, #{stuAge}, #{school}, #{stuTime})
+    </insert>
+    <update id="updatePersonal" parameterType="com.csdn.demo.entity.Personal">
+        update personal set stuName=#{stuName}, stuAge=#{stuAge}, stuTime=#{stuTime} where stuId=#{stuId}
+    </update>
+    <delete id="deletePersonal" parameterType="integer">
+        delete from personal where stuId = #{stuId}
+    </delete>
+</mapper>
